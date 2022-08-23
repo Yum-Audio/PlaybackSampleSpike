@@ -1,0 +1,5 @@
+Builds
+JuceLibraryCode
+CmakeLists.txt
+Resources/DSP/DSP/gen_dsp/
+*.pkg
