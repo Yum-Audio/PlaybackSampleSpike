@@ -143,7 +143,7 @@ void PlaybackSampleSpikeAudioProcessor::processBlock (juce::AudioBuffer<float>& 
             if (playback != lastPlaybackState)
             {
                 if (playback)
-                    buffer.setSample (0, 1, 1);
+                    buffer.setSample (0, 0, 1);
                 
                 lastPlaybackState = playback;
             }
