@@ -131,18 +131,16 @@ void PlaybackSampleSpikeAudioProcessor::processBlock (juce::AudioBuffer<float>& 
                 lastPlaybackState = playback;
             }
             
-            if (auto ppq = pos->getPpqPosition())
-            {
-                const auto modPpq = std::fmod ( *ppq, 1.0 );
-                for (int s = 0; s < buffer.getNumSamples(); s++)
-                {
-                    buffer.setSample (0, s, *ppq);
-                    buffer.setSample (1, s, modPpq);
-                }
-
-                
-                
-            }
+//            if (auto ppq = pos->getPpqPosition())
+//            {
+//                const auto modPpq = std::fmod ( *ppq, 1.0 );
+//                for (int s = 0; s < buffer.getNumSamples(); s++)
+//                {
+//                    buffer.setSample (0, s, *ppq);
+//                    buffer.setSample (1, s, modPpq);
+//                }
+// 
+//            }
         }
         
         
