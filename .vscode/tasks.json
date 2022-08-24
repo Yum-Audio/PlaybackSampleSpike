@@ -1,0 +1,35 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build Plugins: Debug",
+            "type": "shell",
+            "command": "./Scripts/Build.sh",
+            "presentation": {"echo": true, "reveal": "always", "focus": false, "panel": "shared", "showReuseMessage": false, "clear": true},
+        },
+        {
+            "label": "Build Plugins: Release",
+            "type": "shell",
+            "command": "./Scripts/Build.sh Release",
+            "presentation": {"echo": true, "reveal": "always", "focus": false, "panel": "shared", "showReuseMessage": false, "clear": true},
+        },
+        {
+            "label": "Build Plugins & Run Standalone: Debug",
+            "type": "shell",
+            "command": "./Scripts/BuildAndRun.sh",
+            "presentation": {"echo": true, "reveal": "always", "focus": false, "panel": "shared", "showReuseMessage": false, "clear": true},
+        },
+        {
+            "label": "Build Plugins & Run Standalone: Release",
+            "type": "shell",
+            "command": "./Scripts/BuildAndRun.sh Release",
+            "presentation": {"echo": true, "reveal": "always", "focus": false, "panel": "shared", "showReuseMessage": false, "clear": true},
+        },
+		{
+            "label": "Build notarized products",
+            "type": "shell",
+            "command": "./Scripts/BuildNotarizedProducts/BuildNotarizedProducts.sh",
+            "presentation": {"echo": true, "reveal": "always", "focus": false, "panel": "shared", "showReuseMessage": false, "clear": true},
+        }
+    ]
+}

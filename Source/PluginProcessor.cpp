@@ -106,26 +106,9 @@ void PlaybackSampleSpikeAudioProcessor::releaseResources()
 #ifndef JucePlugin_PreferredChannelConfigurations
 bool PlaybackSampleSpikeAudioProcessor::isBusesLayoutSupported (const BusesLayout& layouts) const
 {
-  #if JucePlugin_IsMidiEffect
-    juce::ignoreUnused (layouts);
-    return true;
-  #else
-    // This is the place where you check if the layout is supported.
-    // In this template code we only support mono or stereo.
-    // Some plugin hosts, such as certain GarageBand versions, will only
-    // load plugins that support stereo bus layouts.
-    if (layouts.getMainOutputChannelSet() != juce::AudioChannelSet::mono()
-     && layouts.getMainOutputChannelSet() != juce::AudioChannelSet::stereo())
-        return false;
 
-    // This checks if the input layout matches the output layout
-   #if ! JucePlugin_IsSynth
-    if (layouts.getMainOutputChannelSet() != layouts.getMainInputChannelSet())
-        return false;
-   #endif
-
-    return true;
-  #endif
+    return layouts.getMainOutputChannelSet() == juce::AudioChannelSet::stereo();
+     
 }
 #endif
 
@@ -147,7 +130,18 @@ void PlaybackSampleSpikeAudioProcessor::processBlock (juce::AudioBuffer<float>& 
                 
                 lastPlaybackState = playback;
             }
+            
+            if (auto ppq = pos->getPpqPosition())
+            {
+                const auto modPpq = std::fmod ( *ppq, 1.0 );
+                for (int s = 0; s < buffer.getNumSamples(); s++)
+                    buffer.setSample(1, s, modPpq);
+                
+                
+            }
         }
+        
+        
     }
 }
 
