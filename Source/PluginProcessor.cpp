@@ -107,7 +107,7 @@ void PlaybackSampleSpikeAudioProcessor::releaseResources()
 bool PlaybackSampleSpikeAudioProcessor::isBusesLayoutSupported (const BusesLayout& layouts) const
 {
 
-    return layouts.getMainOutputChannelSet() == juce::AudioChannelSet::stereo();
+    return layouts.getMainOutputChannelSet() == juce::AudioChannelSet::stereo() || layouts.getMainOutputChannelSet() == juce::AudioChannelSet::mono();
      
 }
 #endif
@@ -139,7 +139,7 @@ void PlaybackSampleSpikeAudioProcessor::processBlock (juce::AudioBuffer<float>& 
 //                    buffer.setSample (0, s, *ppq);
 //                    buffer.setSample (1, s, modPpq);
 //                }
-// 
+//
 //            }
         }
         
